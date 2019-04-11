@@ -5,7 +5,7 @@ import javax.persistence.Embeddable;
 
 /**
  * Person encapsulates an individual's first and last name.
- * <p>
+ *
  * Created by maryellenbowman
  */
 @Embeddable
@@ -34,7 +34,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return " firstName='" + firstName + '\'' +
-                ", lastname='" + lastName + "\' ";
+        return  " firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + "\' ";
     }
 }

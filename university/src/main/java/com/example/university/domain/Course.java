@@ -1,14 +1,16 @@
 package com.example.university.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * JPA Entity for a Course offered at the University.
- * <p>
+ *
  * Created by maryellenbowman.
  */
 @Entity
-@Table(name = "COURSE")
+@Table(name="COURSE")
 public class Course {
     @Id
     @GeneratedValue
@@ -17,12 +19,24 @@ public class Course {
     @Column
     private String name;
 
+    @Column
+    private Integer credits;
+
+    @OneToOne
+    private Staff instructor;
+
+    @ManyToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+    private List<Course> prerequisites = new ArrayList<>();
+
+
     @ManyToOne
-    @JoinColumn
     private Department department;
 
-    public Course(String name, Department department) {
+    public Course(String name, Integer credits, Staff instructor, Department department) {
         this.name = name;
+        this.credits = credits;
+        this.instructor = instructor;
         this.department = department;
     }
 
@@ -37,13 +51,28 @@ public class Course {
         return name;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public Staff getInstructor() {
+        return instructor;
     }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public Course addPrerequisite(Course prerequisite){
+        prerequisites.add(prerequisite);
+        return this;
+    }
+
 
     @Override
     public String toString() {
         return "Course{" +
-                "id=" + id + ", name='" + name + '\'' + ", department=" + department.getName() + '}';
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", credits=" + credits +
+                ", instructor=" + instructor +
+                ", department=" + department.getName() +
+                '}';
     }
 }
