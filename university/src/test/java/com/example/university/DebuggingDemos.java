@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
-
 /**
  * Created by maryellenbowman.
  */
@@ -31,9 +29,9 @@ public class DebuggingDemos {
     @Test
     public void runtimeErrors() {
 
-//        Course course = courseRepository.findByDeptName("Sciences");
-//
-//        Course view = courseRepository.getCourseViewByName("English 101");
+        Course course = courseRepository.findByDepartmentName("Sciences");
+
+        CourseView view = courseRepository.getCourseViewByName("English 101");
 
     }
 

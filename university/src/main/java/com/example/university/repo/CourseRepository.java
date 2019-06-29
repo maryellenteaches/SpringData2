@@ -1,9 +1,7 @@
 package com.example.university.repo;
 
-import com.example.university.domain.Staff;
-import com.example.university.domain.Student;
-import com.example.university.view.CourseView;
 import com.example.university.domain.Course;
+import com.example.university.view.CourseView;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -37,13 +35,11 @@ public interface CourseRepository extends CrudRepository<Course,Integer>{
 
     Page<Course> findByCredits(@Param("credits") int credits, Pageable pageable);
 
-//      Common Querying Mistake
-//      Uncomment to Debug.
-//
-//    Course findByDeptName(String deptName);
-//
-//    @Query("Select new com.example.university.view.CourseView" +
-//            "(c.name, c.instructor.member.lastName, c.department.name) from course c where c.name=?1")
-//    Course getCourseViewByName(String name);
+
+    Course findByDepartmentName(String deptName);
+
+    @Query("Select new com.example.university.view.CourseView" +
+            "(c.name, c.instructor.member.lastName, c.department.name) from Course c where c.name=?1")
+    CourseView getCourseViewByName(String name);
 
 }
