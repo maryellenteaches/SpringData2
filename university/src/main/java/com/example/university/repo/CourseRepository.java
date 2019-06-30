@@ -9,6 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * DataSource Management for the Courses at the University.
@@ -17,7 +18,7 @@ import java.util.List;
  */
 public interface CourseRepository extends CrudRepository<Course,Integer>{
 
-    Course findByName(String name);
+    Optional<Course> findByName(String name);
 
     List<Course> findByDepartmentChairMemberLastName(String chair);
 
@@ -29,17 +30,17 @@ public interface CourseRepository extends CrudRepository<Course,Integer>{
 
     @Query("Select new com.example.university.view.CourseView" +
             "(c.name, c.instructor.member.lastName, c.department.name) from Course c where c.id=?1")
-    CourseView getCourseView(int courseId) ;
+    Optional<CourseView> getCourseView(int courseId) ;
 
     List<Course> findByCredits(@Param("credits") int credits);
 
     Page<Course> findByCredits(@Param("credits") int credits, Pageable pageable);
 
 
-    Course findByDepartmentName(String deptName);
+    Optional<Course> findByDepartmentName(String deptName);
 
     @Query("Select new com.example.university.view.CourseView" +
             "(c.name, c.instructor.member.lastName, c.department.name) from Course c where c.name=?1")
-    CourseView getCourseViewByName(String name);
+    Optional<CourseView> getCourseViewByName(String name);
 
 }

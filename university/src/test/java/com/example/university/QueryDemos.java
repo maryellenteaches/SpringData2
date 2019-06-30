@@ -112,17 +112,17 @@ public class QueryDemos {
 
 
         //*******Complex Queries********
-        Course english101 = courseRepository.findByName("English 101");
+        courseRepository.findByName("English 101").ifPresent(english101 -> {
+            //Select c from Course c join c.prerequisites p where p.id = ?1
+            System.out.println("\nFind Courses where English 101 is a prerequisite");
+            courseRepository.findCourseByPrerequisite(english101.getId())
+                    .forEach(System.out::println);
 
-        //Select c from Course c join c.prerequisites p where p.id = ?1
-        System.out.println("\nFind Courses where English 101 is a prerequisite");
-        courseRepository.findCourseByPrerequisite(english101.getId())
-                .forEach(System.out::println);
-
-        //Select new com.example.university.view.CourseView
-        //  (c.name, c.instructor.member.lastName, c.department.name) from Course c where c.id=?1
-        System.out.println("\nCourseView for English 101 \n" +
-                courseRepository.getCourseView(english101.getId()));
+            //Select new com.example.university.view.CourseView
+            //  (c.name, c.instructor.member.lastName, c.department.name) from Course c where c.id=?1
+            System.out.println("\nCourseView for English 101 \n" +
+                    courseRepository.getCourseView(english101.getId()));
+        });
     }
 
     /**
