@@ -29,10 +29,9 @@ public class DebuggingDemos {
     @Test
     public void runtimeErrors() {
 
-        Course course = courseRepository.findByDepartmentName("Sciences").orElse(null);
+        Course course = courseRepository.findByDepartmentName("Sciences");
 
-        CourseView view = courseRepository.getCourseViewByName("English 101")
-                .orElseThrow();
+        CourseView view = courseRepository.getCourseViewByName("English 101").orElseThrow();
 
     }
 

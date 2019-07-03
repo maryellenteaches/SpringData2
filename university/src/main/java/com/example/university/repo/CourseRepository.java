@@ -30,14 +30,14 @@ public interface CourseRepository extends CrudRepository<Course,Integer>{
 
     @Query("Select new com.example.university.view.CourseView" +
             "(c.name, c.instructor.member.lastName, c.department.name) from Course c where c.id=?1")
-    Optional<CourseView> getCourseView(int courseId) ;
+    CourseView getCourseView(int courseId) ;
 
     List<Course> findByCredits(@Param("credits") int credits);
 
     Page<Course> findByCredits(@Param("credits") int credits, Pageable pageable);
 
 
-    Optional<Course> findByDepartmentName(String deptName);
+    Course findByDepartmentName(String deptName);
 
     @Query("Select new com.example.university.view.CourseView" +
             "(c.name, c.instructor.member.lastName, c.department.name) from Course c where c.name=?1")
