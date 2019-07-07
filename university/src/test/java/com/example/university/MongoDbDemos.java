@@ -22,7 +22,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-//@DataMongoTest
 public class MongoDbDemos {
 
 	@Autowired
@@ -73,6 +72,7 @@ public class MongoDbDemos {
 
         //@Query with JSON query string that accepts regular expression as a parameter
         //{ 'name' : { $regex: ?0 } }
+        //Any department name that ends in sciences where 's' is case insensitive
         System.out.println("\nFind all Departments with name ending in Sciences");
         departmentRepository.findNameByPattern(".[Ss]ciences").forEach(System.out::println);
 
@@ -80,7 +80,6 @@ public class MongoDbDemos {
         //Invalid Method, will fail at runtime
         System.out.println("\nInvalid Method, cannot cross DBRef's in queries");
         departmentRepository.findByChairMemberLastName("Jones");
-
     }
     @Before
     @After
