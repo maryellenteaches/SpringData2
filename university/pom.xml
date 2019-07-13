@@ -27,7 +27,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
 		</dependency>
 
 		<dependency>
@@ -39,6 +39,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.projectreactor.addons/reactor-test
+		<dependency>
+			<groupId>io.projectreactor.addons</groupId>
+			<artifactId>reactor-test</artifactId>
+			<version>3.0.7.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+		-->
 	</dependencies>
 
 	<build>

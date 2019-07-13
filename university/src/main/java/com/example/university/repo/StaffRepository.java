@@ -2,20 +2,19 @@ package com.example.university.repo;
 
 import com.example.university.domain.Staff;
 import org.springframework.data.mongodb.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
-
-import java.util.List;
+import org.springframework.data.repository.reactive.ReactiveSortingRepository;
+import reactor.core.publisher.Flux;
 
 /**
  * DataSource Management for the Staff at the University.
  * <p>
  * Created by maryellenbowman.
  */
-public interface StaffRepository extends PagingAndSortingRepository<Staff, Integer> {
+public interface StaffRepository extends ReactiveSortingRepository<Staff, Integer> {
 
-    List<Staff> findByMemberLastName(String lastName);
+    Flux<Staff> findByMemberLastName(String lastName);
 
     @Query("{ 'member.firstName' : ?0 }")
-    List<Staff> findByFirstName(String firstName);
+    Flux<Staff> findByFirstName(String firstName);
 
 }
