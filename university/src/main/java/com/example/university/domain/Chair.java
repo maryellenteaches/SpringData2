@@ -4,31 +4,26 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 /**
- * JDBC Entity for a Department of study at the University.
+ * Class representing a chairperson of a department.
  * <p>
  * Created by maryellenbowman
  */
-@Table(value = "DEPARTMENT")
-public class Department {
+@Table("CHAIR")
+public class Chair {
     @Id
-    private Integer id;
+    private int department;
 
     private String name;
 
-    private Chair chair;
-
-    public Department(String name, Chair chair) {
-
+    public Chair(String name) {
         this.name = name;
-        this.chair = chair;
     }
 
     @Override
     public String toString() {
-        return "Department{" +
-                "id=" + id +
+        return "Chair{" +
+                "department=" + department +
                 ", name='" + name + '\'' +
-                ", chair=" + chair +
                 '}';
     }
 }
