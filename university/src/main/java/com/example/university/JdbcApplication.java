@@ -35,5 +35,6 @@ public class JdbcApplication implements CommandLineRunner {
         Department naturalSciences = departmentRepository.save(new Department("Natural Sciences", deanMartin));
         Department socialSciences = departmentRepository.save(new Department("Social Sciences", deanJones));
 
+        departmentRepository.save(socialSciences.updateChair(deanMartin));
     }
 }

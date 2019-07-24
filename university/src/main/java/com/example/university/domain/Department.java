@@ -23,6 +23,11 @@ public class Department {
         this.chair = chair;
     }
 
+    public Department updateChair(Chair chair) {
+        this.chair = chair;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "Department{" +
