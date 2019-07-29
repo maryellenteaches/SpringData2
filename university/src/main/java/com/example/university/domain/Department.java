@@ -23,9 +23,8 @@ public class Department {
         this.chair = chair;
     }
 
-    public Department updateChair(Chair chair) {
+    public void setChair(Chair chair) {
         this.chair = chair;
-        return this;
     }
 
     @Override
