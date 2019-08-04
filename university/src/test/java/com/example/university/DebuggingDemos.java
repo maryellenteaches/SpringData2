@@ -31,8 +31,13 @@ public class DebuggingDemos {
 
         Course course = courseRepository.findByDepartmentName("Sciences");
 
-        CourseView view = courseRepository.getCourseViewByName("English 101").orElseThrow();
-
+        //Various ways to leverage the Optional
+        CourseView view = courseRepository.getCourseViewByName("English 101").get();
+        view = courseRepository.getCourseViewByName("English 101").orElseThrow();
+        view = courseRepository.getCourseViewByName("English 100").orElse(
+                new CourseView("dummyCourse",
+                        "Bad Instructor",
+                        "No Department"));
     }
 
 

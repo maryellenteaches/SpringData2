@@ -36,7 +36,6 @@ public interface CourseRepository extends CrudRepository<Course,Integer>{
 
     Page<Course> findByCredits(@Param("credits") int credits, Pageable pageable);
 
-
     Course findByDepartmentName(String deptName);
 
     @Query("Select new com.example.university.view.CourseView" +

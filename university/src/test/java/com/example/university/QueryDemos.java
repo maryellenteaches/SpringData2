@@ -112,6 +112,7 @@ public class QueryDemos {
 
 
         //*******Complex Queries********
+        //Leverage Optional.ifPresent to avoid null checks
         courseRepository.findByName("English 101").ifPresent(english101 -> {
             //Select c from Course c join c.prerequisites p where p.id = ?1
             System.out.println("\nFind Courses where English 101 is a prerequisite");
