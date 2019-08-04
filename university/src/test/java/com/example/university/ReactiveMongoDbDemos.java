@@ -15,9 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Demonstrate Various Querying Techniques with Spring Data MongoDb
@@ -27,7 +25,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MongoDbDemos {
+public class ReactiveMongoDbDemos {
 
 	@Autowired
     StaffRepository staffRepository;
@@ -35,45 +33,50 @@ public class MongoDbDemos {
 	@Autowired
     DepartmentRepository departmentRepository;
 
-  //  static ;;
-    static List<Staff> allStaff = new ArrayList();
-     /**
+    /**
      * Queries to Mongo DB.
-     *
-     * Staff and Departments persisted to Fongo in-Memory database at startup.
-     * @see MongoDbApplication
      */
 	@Test
 	public void mongoQueryMethods() {
-        //Staff
-        Flux<Staff> staffFlux = staffRepository.findAll();
-        System.out.println(staffFlux.blockLast());
-
+        //Create 2 Mono Staff publishers, data not persisted yet!
         Mono<Staff> deanJonesMono = staffRepository.save(new Staff(1, new Person("John", "Jones")));
         Mono<Staff> deanMartinMono = staffRepository.save(new Staff(2, new Person("John", "Martin")));
 
+        Flux<Staff> staffFlux = staffRepository.findAll();
+
         System.out.println("Before Staff has subscribed " + staffFlux.count().block());
 
+        //Subscribe with block(), returns entity
         Staff deanJones = deanJonesMono.block();
+        //Subscribe with subscribe(), does not return entity
         deanMartinMono.subscribe();
-        Staff deanMartin = staffRepository.findByMemberLastName("Martin").blockFirst();
 
         System.out.println(("After Staff has subscribed " + staffFlux.count().block()));
 
+        //Query returns a Flux publisher
+        Flux<Staff> deanMartinFindByFlux = staffRepository.findByMemberLastName("Martin");
+        Staff deanMartin = deanMartinFindByFlux.blockFirst();
+
         //Departments
-        departmentRepository.saveAll(
+
+        //Create an asynchronous publisher that gets the total number of Departments
+        Mono<Long> departmentCountMono = departmentRepository.findAll().count();
+
+        //Create a asynchronouse Flux publisher that persists 3 new Departments
+        Flux<Department> departmentFlux = departmentRepository.saveAll(
                 Arrays.asList(new Department(100, "Humanities", deanJones),
                             new Department(200, "Natural Sciences", deanMartin),
-                            new Department(300, "Social Sciences", deanJones)))
-                .blockLast();
+                            new Department(300, "Social Sciences", deanJones)));
 
-        System.out.println(("Total Departments " + departmentRepository.findAll().count().block()));
+        System.out.println("Departments found in DB before subscription: "
+                + departmentCountMono.block());
+
+        //Persist the 3 departments, and block until complete
+        departmentFlux.blockLast();
+
+        System.out.println(("Departments found in DB after subscription: "
+                + departmentCountMono.block()));
 	}
-
-	private void print(String message, Flux<?> flux) {
-
-	    System.out.println(message + ":\t " + flux.count().block());
-    }
 
     @Before
     @After
