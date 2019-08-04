@@ -3,12 +3,9 @@ package com.example.university.repo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
 
-import java.io.Serializable;
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -17,19 +14,20 @@ import java.util.Optional;
  * Created by maryellenbowman
  */
 @NoRepositoryBean
-public interface ReadOnlyRepository<T, ID extends Serializable> extends Repository<T,ID > {
+public interface ReadOnlyRepository<T, ID> extends Repository<T,ID > {
 
-    T findOne(ID id);
-
-    boolean exists(ID id);
+    Optional<T> findById(ID id);
 
     Iterable<T> findAll();
 
-    Iterable<T> findAll(Sort sort);
+    Iterable<T> findAllById(Iterable<ID> iterable);
 
-    Iterable<T> findAll(Iterable<ID> iterable);
+    Iterable<T> findAll(Sort sort);
 
     Page<T> findAll(Pageable pageable);
 
     long count();
+
+    boolean existsById(ID id);
+
 }
