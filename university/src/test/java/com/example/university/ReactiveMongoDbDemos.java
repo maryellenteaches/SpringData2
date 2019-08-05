@@ -44,14 +44,15 @@ public class ReactiveMongoDbDemos {
 
         Flux<Staff> staffFlux = staffRepository.findAll();
 
-        System.out.println("Before Staff has subscribed " + staffFlux.count().block());
+        System.out.println("Staff count found in DB BEFORE subscription: " + staffFlux.count().block());
 
         //Subscribe with block(), returns entity
         Staff deanJones = deanJonesMono.block();
+
         //Subscribe with subscribe(), does not return entity
         deanMartinMono.subscribe();
 
-        System.out.println(("After Staff has subscribed " + staffFlux.count().block()));
+        System.out.println("Staff count found in DB AFTER subscription:" + staffFlux.count().block());
 
         //Query returns a Flux publisher
         Flux<Staff> deanMartinFindByFlux = staffRepository.findByMemberLastName("Martin");
@@ -68,13 +69,13 @@ public class ReactiveMongoDbDemos {
                             new Department(200, "Natural Sciences", deanMartin),
                             new Department(300, "Social Sciences", deanJones)));
 
-        System.out.println("Departments found in DB before subscription: "
+        System.out.println("Departments found in DB BEFORE subscription: "
                 + departmentCountMono.block());
 
         //Persist the 3 departments, and block until complete
         departmentFlux.blockLast();
 
-        System.out.println(("Departments found in DB after subscription: "
+        System.out.println(("Departments found in DB AFTEr subscription: "
                 + departmentCountMono.block()));
 	}
 
