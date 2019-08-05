@@ -24,7 +24,7 @@ public class JdbcDemos {
 
 
     @Autowired
-    DepartmentRepository departmentRepository;
+    private DepartmentRepository departmentRepository;
      /**
      * Queries to Relational Database with Spring Data JDBC.
      *
@@ -39,7 +39,7 @@ public class JdbcDemos {
         Chair deanCain = new Chair("Dean Cain");
 
         //Departments
-        LOGGER.info("SQL to Create Humanities");
+        printBanner("SQL to Create Humanities");
         departmentRepository.save(new Department("Humanities", deanJones));
 
         printBanner("SQL to Create Natural Sciences");
@@ -53,8 +53,9 @@ public class JdbcDemos {
 
         printBanner("SQL to Lookup Department by Name");
         departmentRepository.findByName("Humanities").ifPresent(department -> {
+            //Modify Department, change chair from Dean Jones to Dean Cain
             department.setChair(deanCain);
-            printBanner("SQL to Update a Department");
+            printBanner("SQL to Update a Department, Deparment id = " + department.getId());
             departmentRepository.save(department);
         });
     }

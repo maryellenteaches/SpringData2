@@ -27,6 +27,18 @@ public class Department {
         this.chair = chair;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Chair getChair() {
+        return chair;
+    }
+
     @Override
     public String toString() {
         return "Department{" +
