@@ -8,6 +8,9 @@
 
 _Twitter: @MEllenBowman_
 
+[Live Interview with Mary Ellen](http://bit.ly/MaryEllenBowman "Live Interview with Mary Ellen")
+
+
 ### Repository contain exercises from the course
 ### Branches correspond to videos (chapter-lesson)
 3-3 : CrudRepository Interface for Entities
