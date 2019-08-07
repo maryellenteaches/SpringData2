@@ -9,34 +9,34 @@
 _Twitter: @MEllenBowman_
 
 ### Repository contain exercises from the course
-### Branches correspond to videos (chapter_lesson)
-3_3 : CrudRepository Interface for Entities
+### Branches correspond to videos (chapter-lesson)
+3-3 : CrudRepository Interface for Entities
 
-3_4 : JPA Repository
+3-4 : JPA Repository
 
-4_1 : Property Expression Query methods
+4-1 : Property Expression Query methods
 
-4_2 : Query Method Clauses and Expressions
+4-2 : Query Method Clauses and Expressions
 
-4_3 : @Query query methods
+4-3 : @Query query methods
 
-4_4 : Paging and Sorting
+4-4 : Paging and Sorting
 
-4_5 : QueryByExample
+4-5 : QueryByExample
 
-4_6 : Debug Query Method Errors
+4-6 : Debug Query Method Errors
 
-4_7 : Optional<> Query Response
+4-7 : Optional<> Query Response
 
-5_1 : Spring Data MongoDB Example
+5-1 : Spring Data MongoDB Example
 
-5_2 : Spring Data JDBC Example
+5-2 : Spring Data JDBC Example
 
-5_3 : Spring Data Reactive Repository Example
+5-3 : Spring Data Reactive Repository Example
 
-6_1 : Spring Data REST
+6-1 : Spring Data REST
 
-6_4 : Read-Only Repository Pattern
+6-4 : Read-Only Repository Pattern
 
 
  
