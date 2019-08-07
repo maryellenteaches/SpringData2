@@ -1,7 +1,7 @@
 package com.example.university;
 
 import com.example.university.domain.Course;
-import com.example.university.repo.CourseRepository;
+import com.example.university.repo.CourseQueryRepository;
 import com.example.university.view.CourseView;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class DebuggingDemos {
 
     @Autowired
-    private CourseRepository courseRepository;
+    private CourseQueryRepository courseRepository;
 
     /**
      * Common Mistakes, Uncomment to debug
