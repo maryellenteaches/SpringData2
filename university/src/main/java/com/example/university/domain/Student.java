@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name="STUDENT")
 public class Student {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;
 
     @Embedded
