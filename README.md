@@ -1,6 +1,6 @@
 # Spring:Spring Data 2
 ## by Mary Ellen Bowman
-[LinkedIn Learning Course "Spring:Spring Data 2" by Mary Ellen Bowman](https://www.linkedin.com/learning/spring-spring-data)
+[LinkedIn Learning Course "Spring:Spring Data 2" by Mary Ellen Bowman](bit.ly/SpringData)
 
 [Mary Ellen's LinkedIn Profile](https://www.linkedin.com/in/mebowman/ "Mary Ellen's LinkedIn Page")
 
