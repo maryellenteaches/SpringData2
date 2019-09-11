@@ -6,7 +6,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
 
-import java.io.Serializable;
 import java.util.Optional;
 
 /**
@@ -15,7 +14,7 @@ import java.util.Optional;
  * Created by maryellenbowman
  */
 @NoRepositoryBean
-public interface ReadOnlyRepository<T, ID extends Serializable> extends Repository<T,ID > {
+public interface ReadOnlyRepository<T, ID> extends Repository<T,ID > {
 
 
     Optional<T> findById(ID id);
