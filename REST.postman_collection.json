@@ -100,7 +100,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"rawModeData": "{ \"attendee\": \n\t{\"firstName\":\"Patrick\",\n\t\"lastName\":\"Joseph\"},\n\t\"fulltime\":true,\n\t\"age\":20\n}"
+			"rawModeData": "{ \"attendee\": \n\t{\"firstName\":\"Patrick\",\n\t\"lastName\":\"Joseph\"},\n\t\"fullTime\":true,\n\t\"age\":20\n}"
 		},
 		{
 			"id": "724b20ea-449b-cf18-1923-eb79f71a15d0",
