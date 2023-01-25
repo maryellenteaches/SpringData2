@@ -1,6 +1,11 @@
-# Spring:Spring Data 2
+# THIS REPOSITORY IS FOR AN ARCHIVED COURSE.
+## Latest Spring Data Course:[Spring:Spring Data 2023](https://www.linkedin.com/learning/spring-spring-data-2-18748916).
+
+
+
+# Spring:Spring Data 2 (2017)
 ## by Mary Ellen Bowman
-[LinkedIn Learning Course "Spring:Spring Data 2" by Mary Ellen Bowman](http://linkedin-learning.pxf.io/dvmPy)
+[LinkedIn Learning Course "Spring:Spring Data 2 (2017)" by Mary Ellen Bowman](http://linkedin-learning.pxf.io/dvmPy)
 
 [Mary Ellen's LinkedIn Profile](https://www.linkedin.com/in/mebowman/ "Mary Ellen's LinkedIn Page")
 
